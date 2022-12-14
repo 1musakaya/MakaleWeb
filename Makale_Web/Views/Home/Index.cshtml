@@ -59,7 +59,7 @@
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
 
-                            <img src="~/Images/a5eebe0fbab64f2a0f517bfc58bd1f93.jpg" alt="">
+                            <img src="~/Images/esprili-davetiye-sözleri.jpg" alt="">
                             <div class="caption">
                                 <h4>
                                     <a href="#">@item.Baslik</a>
@@ -71,14 +71,14 @@
                                 </h6>
 
 
-                                @if (!string.IsNullOrEmpty(item.Text) && item.Text.Length > 125)
+                                @if (!string.IsNullOrEmpty(item.Text) && item.Text.Length > 130)
                                 {
-                                    <p>@item.Text.Substring(0, 125)<a href="#" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-book" style="color:deeppink"></span>Devamı...</a></p>
+                                <p>@item.Text.Substring(0, 130)<a href="#" class="btn btn-default btn-xs buttonalign"><span class="glyphicon glyphicon-book " style="color:limegreen"></span>Devamı...</a></p>
 
                                 }
                                 else
                                 {
-                                    <p>@item.Text</p>
+                                <p>@item.Text</p>
                                 }
 
 

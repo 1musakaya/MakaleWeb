@@ -14,6 +14,9 @@ body {
 
 .carousel-holder {
     margin-bottom: 30px;
+    height:300px;
+  
+    width: 900px;
 }
 
 .carousel-control,
@@ -26,9 +29,9 @@ body {
     overflow: hidden;
 }
 
-.caption h4 {
-    white-space: nowrap;
-}
+    .caption h4 {
+        white-space: nowrap;
+    }
 
 .thumbnail img {
     width: 100%;
@@ -40,34 +43,33 @@ body {
     color: #d17581;
 }
 
-.ratings button {
-    color:purple;
-}
+    .ratings button {
+        color: purple;
+    }
 
-.ratings button:hover {
-    color:mediumpurple;
-}
+        .ratings button:hover {
+            color: mediumpurple;
+        }
 
 .thumbnail {
-    font-family:'Comic Sans MS';
+    font-family: 'Comic Sans MS';
     padding: 0;
-    background-color:lavender;
-    border-width:10px thick;
-    border-style:dotted;
-    border-color:mediumpurple;
-    
+    background-color: lavender;
+    border-width: 10px thick;
+    border-style: dotted;
+    border-color: #092f64;
 }
 
-.thumbnail .caption-full {
-    padding: 9px;
-    color: #333;
-}
+    .thumbnail .caption-full {
+        padding: 9px;
+        color: #333;
+    }
 
 .footer {
     margin: 50px 0;
 }
 
-.butonhizalama {
-    right: -30px;
-    
+.buttonalign {
+    position: absolute;
+    right: 30px;
 }
