@@ -1,5 +1,6 @@
 ﻿using Makale_BusinessLayer;
 using Makale_Entities;
+using Makale_Entities.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,9 +25,9 @@ namespace Makale_Web.Controllers
 
             // test1.YorumEkle();
 
-            
 
-            return View(ny.Listele().OrderByDescending(x=>x.DegistirmeTarihi).ToList());  // indexin artık bir modeli var
+
+            return View(ny.Listele().OrderByDescending(x => x.DegistirmeTarihi).ToList());  // indexin artık bir modeli var
         }
 
         public ActionResult Kategori(int? id)
@@ -39,18 +40,45 @@ namespace Makale_Web.Controllers
             KategoriYonet ky = new KategoriYonet();
             Kategori kategori = ky.KategoriBul(id.Value);
 
-            if (kategori==null)  // eğer kategoriyi bulamadıysa
+            if (kategori == null)  // eğer kategoriyi bulamadıysa
             {
                 return HttpNotFound();
             }
-            return View("Index",kategori.Notlar);
+            return View("Index", kategori.Notlar);
 
         }
 
         public ActionResult Begenilenler()
         {
-            return View("Index",ny.Listele().OrderByDescending(x=>x.BegeniSayisi).ToList());
+            return View("Index", ny.Listele().OrderByDescending(x => x.BegeniSayisi).ToList());
         }
-       
+
+        public ActionResult About()
+        {
+
+            return View();
+        }
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(LoginModel model)
+        {
+            return View(model);
+        }
+
+        public ActionResult KayitOl()
+        {
+            return View();
+        }
+
+        [HttpPost]
+
+        public ActionResult KayitOl(KayitModel model)
+        {
+            return View(model);
+        }
     }
 }

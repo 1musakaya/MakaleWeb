@@ -1,0 +1,58 @@
+﻿@model Makale_Entities.ViewModel.LoginModel
+@{
+    ViewBag.Title = "Login";
+}
+
+<link href="~/Content/Login-register.css" rel="stylesheet" />
+
+
+<div id="login">
+
+    <div class="container">
+        <div id="login-row" class="row justify-content-center align-items-center">
+            <div id="login-column" class="col-md-9">
+                <div class="box">
+                    <div class="shape1"></div>
+                    <div class="shape2"></div>
+                    <div class="shape3"></div>
+                    <div class="shape4"></div>
+                    <div class="shape5"></div>
+                    <div class="shape6"></div>
+                    <div class="shape7"></div>
+                    <div class="float">
+                        <form class="form" action="" method="post">
+
+                            @Html.ValidationSummary(false)
+                            <br />
+                            <div class="form-group " style="color:aliceblue">
+                                <span class="glyphicon glyphicon-user"></span> <label form="username" class="text-white">Kullanıcı Adı:</label><br>
+                                @*<input type="text" name="username" id="username" class="form-control">*@
+
+                                @Html.TextBoxFor(model => model.KullaniciAdi, new {@class="form-control",placeholder= "Kullanıcı Adınız" })
+
+                            </div>
+
+                            <div class="form-group" style="color:aliceblue"><span class="glyphicon glyphicon-lock"></span>
+                                <label for="password" class="text-white">Şifre:</label><br>
+                                @*<input type="password" name="password" id="password" class="form-control">*@
+
+                                @Html.TextBoxFor(model=>model.Sifre,new {@class="form-control",placeholder= "Şifreniz",type="password" })
+
+                            </div>
+                            <div class="form-group text-center" style="color:aliceblue">
+                                <input type="submit" name="submit" class="btn btn-info btn-md" value="Giriş">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    $(function () {
+        $("footer").parent().hide();
+    });
+</script>
