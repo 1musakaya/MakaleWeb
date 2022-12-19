@@ -16,6 +16,8 @@ namespace Makale_Web.Controllers
         //
         NotYonet ny = new NotYonet();
         KullaniciYonet ky = new KullaniciYonet();
+        KategoriYonet kty = new KategoriYonet();
+
         public ActionResult Index()
         {
             //  Test test1=new Test(); 
@@ -40,8 +42,8 @@ namespace Makale_Web.Controllers
                 return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
             }
 
-            KategoriYonet ky = new KategoriYonet();
-            Kategori kategori = ky.KategoriBul(id.Value);
+
+            Kategori kategori = kty.KategoriBul(id.Value);
 
 
             if (kategori == null)  // eğer kategoriyi bulamadıysa
@@ -79,18 +81,18 @@ namespace Makale_Web.Controllers
                     return View(model);
                 }
                 Session["login"] = sonuc.nesne;  // Session da login olan kullanıcı bilgileri tutuldu
-                RedirectToAction("Index"); // Login oluştuğu için indexe yönelndirildi
+                return RedirectToAction("Index"); // Login oluştuğu için indexe yönelndirildi
             }
 
             return View(model);
         }
 
-        public ActionResult KayitOl()
+        public ActionResult LogOut()
         {
-            return View();
+            Session.Clear();
+            return RedirectToAction("Index");
         }
-
-        public ActionResult UserActivate(Guid id)
+        public ActionResult KayitOl()
         {
             return View();
         }
@@ -108,10 +110,74 @@ namespace Makale_Web.Controllers
                     sonuc.Hatalar.ForEach(x => ModelState.AddModelError("", x));  // for döngüsüyle yazmak yerine foreach yazdık
                     return View(model);
                 }
-                return RedirectToAction("Login");
+                return RedirectToAction("KayitBasarili");
             }
 
             return View(model);
+        }
+
+        public ActionResult KayitBasarili()
+        {
+            return View();
+        }
+
+        public ActionResult UserActivate(Guid id)
+        {
+            BusinessLayerSonuc<Kullanici> sonuc = ky.ActivateUser(id);
+
+            if (sonuc.Hatalar.Count > 0)
+            {
+                TempData["hatalar"] = sonuc.Hatalar;
+            }
+            else
+            {
+                TempData["hatalar"] = "Kullanıcı aktif edilmiştir";
+            }
+            return View();
+        }
+        public ActionResult UserActivateHata()
+        {
+            List<string> hatalar = null;
+
+            if (TempData["hatalar"] != null)
+            {
+                hatalar = (List<string>)TempData["hatalar"];
+            }
+            return View(hatalar);
+        }
+        public ActionResult ProfilGoster()
+        {
+            Kullanici kullanici = (Kullanici)Session["login"];
+            return View(kullanici);
+        }
+        public ActionResult ProfilDegistir()
+        {
+            Kullanici kullanici = (Kullanici)Session["login"];
+
+            return View(kullanici);
+
+        }
+        [HttpPost]
+        public ActionResult ProfilDegistir(Kullanici kullanici, HttpPostedFile profilresmi)
+        {
+            if (profilresmi != null && (profilresmi.ContentType == "image/jpeg" || profilresmi.ContentType == "image/jpg" || profilresmi.ContentType == "image/png"))
+            {
+                string dosyaadi = $"user_{kullanici.Id}.{profilresmi.ContentType.Split('/')[1]}"; //user_15.jpg
+                profilresmi.SaveAs(Server.MapPath($"~/image/{dosyaadi}"));
+            }
+            BusinessLayerSonuc<Kullanici> sonuc = ky.KullaniciUpdate(kullanici);
+            if (sonuc.Hatalar.Count > 0)
+            {
+                sonuc.Hatalar.ForEach(x => ModelState.AddModelError("", x));
+                return View(sonuc.nesne);
+
+            }
+
+            return View(kullanici);
+        }
+        public ActionResult ProfilSil()
+        {
+            return View();
         }
     }
 }

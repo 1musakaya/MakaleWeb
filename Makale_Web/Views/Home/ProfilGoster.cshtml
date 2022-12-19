@@ -1,0 +1,48 @@
+﻿@model Kullanici
+@{
+    ViewBag.Title = "ProfilGoster";
+}
+
+
+
+<div class="container">
+    <div class="row">
+        <h2>Profiliniz</h2>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-2">
+            <img src="~/Images/@Model.ProfilResim" class="img-circle" width="200" height="200" />
+        </div>
+        <div class="col-md-8">
+            <h3>
+                <b>Adınız ve Soyadınız:</b>
+                @(Model.Ad+" "+Model.Soyad)
+            </h3>
+            <br />
+            <h4>
+                <b>Kullanıcı Adı:</b>
+                @(Model.KullaniciAdi)
+            </h4>
+            <br />
+            <h4>
+                <b>Email adresi:</b>
+                @(Model.Email)
+            </h4>
+        </div>
+        <div class="col-md-2">
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    Seçenekler
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="/Home/ProfilDegistir">Değiştir</a></li>
+                    <li><a href="/Home/ProfilSil">Sil</a></li>
+                   
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+

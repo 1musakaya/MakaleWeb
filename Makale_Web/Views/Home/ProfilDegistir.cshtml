@@ -1,0 +1,66 @@
+﻿@model Kullanici
+@{
+    ViewBag.Title = "ProfilDegistir";
+}
+
+<div class="container">
+    <div class="row">
+        <h2>Profiliniz</h2>
+        <hr />
+    </div>
+
+    <div class="row">
+        @using (Html.BeginForm("ProfilDegistir","Home",FormMethod.Post,new{enctype="multipart/form-data"}))
+        {
+
+            <div class="col-md-3">
+                <img src="~/Images/@Model.ProfilResim" class="img-circle" width="200" height="200" />
+                <br />
+                <input type="file" name="profilresmi" id="profilresmi" class="form-control" />
+            </div>
+
+            <div class="col-md-9">
+                @Html.ValidationSummary(false)
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Ad, new { @class = "control-label col-md-2" })
+
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Ad, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Soyad, new { @class = "control-label col-md-2" })
+
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Soyad, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
+
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Email, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Sifre, new { @class = "control-label col-md-2" })
+
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Sifre, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Kaydet" class="btn btn-success"/> 
+                    @Html.ActionLink("İptal","ProfilGoster","Home",new {@class="btn btn-default"})
+                </div>
+
+            </div>
+
+        }
+    </div>
+</div>

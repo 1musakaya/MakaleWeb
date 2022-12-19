@@ -19,6 +19,13 @@
 </head>
 
 <body>
+    @{
+        Kullanici kullanici = null;
+        if (Session["login"] != null)
+        {
+            kullanici = (Kullanici)Session["login"];
+        }
+    }
 
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -36,9 +43,12 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li>
-                        <a href=""><span class="glyphicon glyphicon-wrench"></span> Yönetim</a>
-                    </li>
+                    @if (kullanici != null && kullanici.Admin)
+                    {
+                        <li>
+                            <a href=""><span class="glyphicon glyphicon-wrench"></span> Yönetim</a>
+                        </li>
+                    }
                     <li>
                         <a href="/Home/Begenilenler"><span class="glyphicon glyphicon-star"></span> En Beğenilenler</a>
                     </li>
@@ -50,10 +60,17 @@
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/Home/Login"><span class="glyphicon glyphicon-log-in"></span> Giriş</a></li>
-                    <li><a href="/Home/KayitOl"><span class="glyphicon glyphicon-user"></span> Üye Ol</a></li>
-                    <li><a href="/Home/Profil"><span class="glyphicon glyphicon-user"></span> GökçeÜnlü</a></li>
-                    <li><a href="/Home/Index"><span class="glyphicon glyphicon-log-out"></span> Çıkış</a></li>
+                    @if (kullanici == null)
+                    {
+                        <li><a href="/Home/Login"><span class="glyphicon glyphicon-log-in"></span> Giriş</a></li>
+                        <li><a href="/Home/KayitOl"><span class="glyphicon glyphicon-user"></span> Üye Ol</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="/Home/ProfilGoster"><span class="glyphicon glyphicon-user"></span>  @kullanici.KullaniciAdi</a></li>
+                        <li><a href="/Home/Logout"><span class="glyphicon glyphicon-log-out"></span> Çıkış</a></li>
+                    }
+
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

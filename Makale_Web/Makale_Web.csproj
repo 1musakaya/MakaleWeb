@@ -118,6 +118,7 @@
     <Content Include="Images\c0fc6718137400881ab8a02c538cb65e.jpg" />
     <Content Include="Images\e12ab41303db9c8e133687dacdc43e3d--wallpaper-sky-nature-wallpaper.jpg" />
     <Content Include="Images\esprili-davetiye-sözleri.jpg" />
+    <Content Include="Images\images.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.6.1.js" />
@@ -147,6 +148,10 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\KayitOl.cshtml" />
     <Content Include="Views\Home\UserActivate.cshtml" />
+    <Content Include="Views\Home\UserActivateHata.cshtml" />
+    <Content Include="Views\Home\KayitBasarili.cshtml" />
+    <Content Include="Views\Home\ProfilGoster.cshtml" />
+    <Content Include="Views\Home\ProfilDegistir.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
