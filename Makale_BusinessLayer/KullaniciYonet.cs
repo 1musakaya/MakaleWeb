@@ -47,7 +47,7 @@ namespace Makale_BusinessLayer
                     //Aktivasyon maili gönderilecek
                     string siteUrl = ConfigHelper.Get<string>("SiteRootUrl");
                     string activateUrl = $"{siteUrl}/Home/UserActivate/{sonuc.nesne.AktifGuid}";
-                    string body = $"Merhaba {sonuc.nesne.KullaniciAdi} <br/> Hesabınızı aktifleştirmek için <a href='{activateUrl}'> tıklayınız.</a>";
+                    string body = $"Merhaba {sonuc.nesne.KullaniciAdi} <br/> Hesabınızı aktifleştirmek için <a href='{activateUrl}'> tıklayınız</a>";
                     MailHelper.SendMail(body, sonuc.nesne.Email, "Hesap Aktifleştirme");
                 }
             }
@@ -104,11 +104,11 @@ namespace Makale_BusinessLayer
 
             if (k != null && k.Id != kullanici.Id)
             {
-                if (kullanici.KullaniciAdi == kullanici.KullaniciAdi)
+                if (k.KullaniciAdi == kullanici.KullaniciAdi)
                 {
                     sonuc.Hatalar.Add("Kullanıcı adı sistemde kayıtlıdır!");
                 }
-                if (kullanici.Email == kullanici.Email)
+                if (k.Email == kullanici.Email)
                 {
                     sonuc.Hatalar.Add("E-mail sistemde kayıtlıdır!");
                 }
