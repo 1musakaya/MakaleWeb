@@ -1,4 +1,5 @@
-﻿using Makale_Entities;
+﻿using Makale_Common;
+using Makale_Entities;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -49,8 +50,8 @@ namespace Makale_DataAccessLayer
             if (nesne is EntitiesBase)
             {
                 obj.KayitTarihi = zaman;
-                obj.DegistirmeTarihi = DateTime.Now;
-                obj.DegistirenKullanici = "system";
+                obj.DegistirmeTarihi = zaman;
+                obj.DegistirenKullanici =Uygulama.kullaniciAd;
             }
             return db.SaveChanges();
         }
