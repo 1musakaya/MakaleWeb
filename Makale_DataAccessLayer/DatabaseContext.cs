@@ -8,17 +8,26 @@ using System.Threading.Tasks;
 
 namespace Makale_DataAccessLayer
 {
-    public class DatabaseContext : DbContext
-    {
-        public DbSet<Kategori> Kategoriler { get; set; }
-        public DbSet<Kullanici> Kullanicilar { get; set; }
-        public DbSet<Yorum> Yorumlar { get; set; }
-        public DbSet<Not> Notlar { get; set; }
-        public DbSet<Begeni> Begeniler { get; set; }
+	public class DatabaseContext : DbContext
+	{
+		public DbSet<Kategori> Kategoriler { get; set; }
+		public DbSet<Kullanici> Kullanicilar { get; set; }
+		public DbSet<Yorum> Yorumlar { get; set; }
+		public DbSet<Not> Notlar { get; set; }
+		public DbSet<Begeni> Begeniler { get; set; }
 
-        public DatabaseContext()
-        {
-            Database.SetInitializer(new VeriTabanıOlusturucu());
-        }
-    }
+		public DatabaseContext()
+		{
+			Database.SetInitializer(new VeriTabanıOlusturucu());
+		}
+
+		protected override void OnModelCreating(DbModelBuilder modelBuilder)
+		{
+			///FluentApi olarak araştırabilirsin
+			///// kategori silme işlemi için cascade ya da kategori yönetteki silme işlemleri ya da dbcontextte yapabileceğimiz diğer metot (codefirst)
+			modelBuilder.Entity<Not>().HasMany(n => n.Yorumlar).WithRequired(y => y.Not).WillCascadeOnDelete(true);
+
+			modelBuilder.Entity<Not>().HasMany(n=>n.Begeniler).WithRequired(b=>b.Not).WillCascadeOnDelete(true);
+		}
+	}
 }

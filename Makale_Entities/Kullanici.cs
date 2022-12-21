@@ -18,7 +18,7 @@ namespace Makale_Entities
         [StringLength(20)]
         public string Soyad { get; set; }
 
-        [StringLength(30)]
+        [StringLength(30),ScaffoldColumn(false)]   // otomatik control view oluşunca gelmesini istemediğimiz alanlara
         public string ProfilResim { get; set; }
 
         [DisplayName("Kullanıcı Adı"),Required, StringLength(20)]
@@ -32,7 +32,7 @@ namespace Makale_Entities
         public bool Aktif { get; set; }   // kullanıcı admin mi?
         public bool Admin { get; set; }   /// kullanıcı admin mii?
 
-        [Required] /// aktivasyonun bir anlmaı olsun diye
+        [Required, ScaffoldColumn(false)] /// aktivasyonun bir anlmaı olsun diye
         public Guid AktifGuid { get; set; }
         public virtual List<Not> Notlar { get; set; }
         public virtual List<Yorum> Yorumlar { get; set; }
