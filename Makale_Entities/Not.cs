@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -19,6 +20,7 @@ namespace Makale_Entities
         public bool Taslak { get; set; }
         public int BegeniSayisi { get; set; }
 
+        [DisplayName("Kategori")]
         public int KategoriId { get; set; }
         public virtual Kategori Kategori { get; set; }
         public virtual Kullanici Kullanici { get; set; }

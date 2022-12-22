@@ -111,6 +111,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="App_Code\BootstrapHelper.cshtml" />
     <None Include="Scripts\jquery-3.6.1.intellisense.js" />
     <Content Include="Images\7f5f72b43cfbaa8fc0ce70d228c685ed.jpg" />
     <Content Include="Images\a5eebe0fbab64f2a0f517bfc58bd1f93.jpg" />
@@ -131,6 +132,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KategoriController.cs" />
     <Compile Include="Controllers\KullaniciController.cs" />
+    <Compile Include="Controllers\NotController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -164,6 +166,11 @@
     <Content Include="Views\Kullanici\Details.cshtml" />
     <Content Include="Views\Kullanici\Edit.cshtml" />
     <Content Include="Views\Kullanici\Index.cshtml" />
+    <Content Include="Views\Not\Create.cshtml" />
+    <Content Include="Views\Not\Delete.cshtml" />
+    <Content Include="Views\Not\Details.cshtml" />
+    <Content Include="Views\Not\Edit.cshtml" />
+    <Content Include="Views\Not\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

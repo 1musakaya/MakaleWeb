@@ -20,6 +20,7 @@
         <table class="table">
             <tr>
                 <th>
+
                     @Html.DisplayNameFor(model => model.Baslik)
                 </th>
                 <th>
@@ -56,12 +57,18 @@
                         @Html.DisplayFor(modelItem => item.DegistirenKullanici)
                     </td>
                     <td>
-                        <a href="/Kategori/Edit/@item.Id" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-edit"></span></a>
+                        @BootstrapHelper.Linkbutton("/Kategori/Edit/" + item.Id, "warning", "btn-sm", "edit","")
+
+                        @BootstrapHelper.Linkbutton("/Kategori/Details/" + item.Id, "info", "btn-sm", "search","")
+
+                         @BootstrapHelper.Linkbutton("/Kategori/Delete/" + item.Id, "danger", "btn-sm", "trash","")
+
+                        @*<a href="/Kategori/Edit/@item.Id" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-edit"></span></a>
                         @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
                         <a href="/Kategori/Details/@item.Id" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-search"></span></a>
                         @Html.ActionLink("Details", "Details", new { id = item.Id }) |
                         <a href="/Kategori/Delete/@item.Id" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></a>
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
                     </td>
                 </tr>
             }

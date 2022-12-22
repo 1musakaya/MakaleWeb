@@ -38,9 +38,12 @@
 
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Kategori Ekle" class="btn btn-success" />
+                        @*<input type="submit" value="Kaydet" class="btn btn-success" />*@
+                        @BootstrapHelper.Button("submit","Kaydet","success","","floppy-disk")
 
                         <a href="/Kategori/Index" class="btn btn-warning"><span class="glyphicon glyphicon-list"></span>  Listeye Dön</a>
+
+                        @BootstrapHelper.Linkbutton("/Kategori/Index","warning","","list","Listeye Dön")
                     </div>
                 </div>
             </div>
