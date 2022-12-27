@@ -44,11 +44,12 @@
                     {           
    
                         <li class="dropdown">
-                            <a href="/Not/Index" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-wrench"></span>Yönetim <span class="caret"></span></a>
+                            <a href="/Not/Index" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon "></span>Yönetim <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="/Not/Create">Not Ekle</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="/Not/Index">Notlarım</a></li>
+                                <li role="separator" class="divider"></li>
                                 <li><a href="/Not/Begendiklerim">Beğendiklerim</a></li>
 
                                 @if (kullanici.Admin)
@@ -66,13 +67,13 @@
                     }
 
                     <li>
-                        <a href="/Home/Begenilenler"><span class="glyphicon glyphicon-star"></span>En Beğenilenler</a>
+                        <a href="/Home/Begenilenler"><span class="glyphicon "></span>En Beğenilenler</a>
                     </li>
                     <li>
-                        <a href="/Home/Index"><span class="glyphicon glyphicon-list"></span>Son Yazılanlar</a>
+                        <a href="/Home/Index"><span class="glyphicon "></span>Son Yazılanlar</a>
                     </li>
                     <li>
-                        <a href="/Home/About"><span class="glyphicon glyphicon-info-sign"></span>Hakkımızda</a>
+                        <a href="/Home/About"><span class="glyphicon "></span>Hakkımızda</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -81,12 +82,14 @@
                     {
                         <li>
                             <a href="/Home/Login">
-                                <span class="glyphicon glyphicon-log-in">Giriş</span>
+                                <b><span >Giriş&nbsp;Yap</span> </b>
+                                
                             </a>
                         </li>
                         <li>
                             <a href="/Home/KayitOl">
-                                <span class="glyphicon glyphicon-user">Üye Ol</span>
+                                <b><span>Üye&nbsp;Ol</span> </b>
+                                
                             </a>
                         </li>
                     }
@@ -94,12 +97,14 @@
                     {
                         <li>
                             <a href="/Home/ProfilGoster">
-                                <span class="glyphicon glyphicon-user">@kullanici.KullaniciAdi</span>
+                                <b><span>@kullanici.KullaniciAdi</span></b>
+                                
                             </a>
                         </li>
                         <li>
                             <a href="/Home/Logout">
-                                <span class="glyphicon glyphicon-log-out">Çıkış</span>
+                                <b><span>Çıkış</span></b>
+                                
                             </a>
                         </li>
 

@@ -11,7 +11,7 @@ namespace Makale_BusinessLayer
     public class YorumYonet
     {
         Repository<Yorum> rep_yorum = new Repository<Yorum>();
-        public Yorum YorumBul (int id)
+        public Yorum YorumBul(int id)
         {
             return rep_yorum.Find(x => x.Id == id);
         }
@@ -28,7 +28,6 @@ namespace Makale_BusinessLayer
 
         public int YorumSil(Yorum yorum)
         {
-            
             return rep_yorum.Delete(yorum);
         }
     }

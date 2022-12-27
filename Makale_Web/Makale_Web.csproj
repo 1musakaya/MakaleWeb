@@ -120,10 +120,10 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="image\deneme.jpg" />
-    <Content Include="image\indir.jpg" />
-    <Content Include="image\user_1.jpg" />
-    <Content Include="image\_sunset.jpg" />
+    <Content Include="image\img1.jpg" />
+    <Content Include="image\img2.jpg" />
+    <Content Include="image\img3.jpg" />
+    <Content Include="image\img4.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="App_Code\BootstrapHelper.cshtml" />
