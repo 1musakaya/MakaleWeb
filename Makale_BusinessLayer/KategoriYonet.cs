@@ -8,96 +8,94 @@ using System.Threading.Tasks;
 
 namespace Makale_BusinessLayer
 {
-	public class KategoriYonet
-	{
-		BusinessLayerSonuc<Kategori> sonuc = new BusinessLayerSonuc<Kategori>();
+    public class KategoriYonet
+    {
+        Repository<Kategori> rep_kat = new Repository<Kategori>();
+        public List<Kategori> Listele()
+        {
+            return rep_kat.Liste();
+        }
 
-		Repository<Kategori> rep_kat = new Repository<Kategori>();
+        public Kategori KategoriBul(int id)
+        {
+            return rep_kat.Find(x => x.Id == id);
+        }
+        BusinessLayerSonuc<Kategori> sonuc = new BusinessLayerSonuc<Kategori>();
+        public BusinessLayerSonuc<Kategori> KategoriEkle(Kategori kategori)
+        {         
+            sonuc.nesne=rep_kat.Find(x=>x.Baslik==kategori.Baslik);
+            if(sonuc.nesne!=null)
+            {
+                sonuc.Hatalar.Add("Bu kategori kayıtlı.");
+            }
+            else
+            {
+               int kayit=rep_kat.Insert(kategori);
+                if(kayit<1)
+                {
+                    sonuc.Hatalar.Add("Kategori kaydedilemedi.");
+                }
+            }
 
-		public List<Kategori> Listele()
-		{
-			return rep_kat.Liste();
-		}
+            return sonuc;
+        }
 
-		public Kategori KategoriBul(int id)
-		{
-			return rep_kat.Find(x => x.Id == id);
-		}
+        public BusinessLayerSonuc<Kategori> KategoriUpdate(Kategori kategori)
+        {
+            sonuc.nesne = rep_kat.Find(x => x.Id == kategori.Id);
+            if(sonuc.nesne!=null)
+            {
+                sonuc.nesne.Baslik = kategori.Baslik;
+                sonuc.nesne.Aciklama = kategori.Aciklama;
+                int updatesonuc=rep_kat.Update(sonuc.nesne);
+               
+                if(updatesonuc<1)
+                {
+                    sonuc.Hatalar.Add("Kategori bilgileri değiştirilemedi.");
+                }
+            }
 
-		public BusinessLayerSonuc<Kategori> KategoriEkle(Kategori kategori)
-		{
+            return sonuc;
+        }
 
-			sonuc.nesne = rep_kat.Find(x => x.Baslik == kategori.Baslik);
-			if (sonuc.nesne != null)
-			{
-				sonuc.Hatalar.Add("Bu kategori kayıtlı");
-			}
-			else
-			{
-				int kayit = rep_kat.Insert(kategori);
-				if (kayit < 1)
-				{
-					sonuc.Hatalar.Add("Kategori kaydedilemedi");
-				}
-			}
+        public BusinessLayerSonuc<Kategori> KategoriSil(Kategori kategori)
+        {
+            BusinessLayerSonuc<Kategori> sonuc = new BusinessLayerSonuc<Kategori>();
+            sonuc.nesne = rep_kat.Find(x => x.Id == kategori.Id);
 
-			return sonuc;
-		}
+            Repository<Not> rep_not = new Repository<Not>();
+            Repository<Yorum> rep_yorum = new Repository<Yorum>();
+            Repository<Begeni> rep_begeni = new Repository<Begeni>();
 
-		public BusinessLayerSonuc<Kategori> KategoriUpdate(Kategori kategori)
-		{
-			sonuc.nesne = rep_kat.Find(x => x.Id == kategori.Id);
-			if (sonuc.nesne != null)
-			{
-				sonuc.nesne.Baslik = kategori.Baslik;
-				sonuc.nesne.Aciklama = kategori.Aciklama;
-				int updatesonuc = rep_kat.Update(sonuc.nesne);
-				if (updatesonuc < 1)
-				{
-					sonuc.Hatalar.Add("Kategori bilgileri değiştirilemedi");
-				}
-			}
-			return sonuc;
-		}
+            if (sonuc.nesne != null)
+            {
+                //foreach (Not not in sonuc.nesne.Notlar.ToList())
+                //{
+                //    foreach (Yorum yorum in not.Yorumlar.ToList())
+                //    {
+                //        rep_yorum.Delete(yorum);
+                //        //yorumlar silinecek
+                //    }
 
-		public BusinessLayerSonuc<Kategori> KategoriSil(Kategori kategori)
-		{
-			BusinessLayerSonuc<Kategori> sonuc = new BusinessLayerSonuc<Kategori>();
+                //    foreach (Begeni begen in not.Begeniler.ToList())
+                //    {
+                //        rep_begeni.Delete(begen);
+                //        //beğeniler silinecek
+                //    }
 
-			sonuc.nesne = rep_kat.Find(x => x.Id == kategori.Id);
+                //    //notlar silinecek
+                //    rep_not.Delete(not);
+                //}
 
-			Repository<Not> rep_not = new Repository<Not>();
-			Repository<Yorum> rep_yorum = new Repository<Yorum>();
-			Repository<Begeni> rep_begeni = new Repository<Begeni>();
-
-			if (sonuc.nesne != null)
-			{
-				foreach (Not not in sonuc.nesne.Notlar.ToList())
-				{
-					foreach (Yorum yorum in not.Yorumlar.ToList())
-					{
-						// sqlde bunlar hep bağlantılı olduğu için direkt olarak katageroi silenmiyor; ya sql de casade yapılacak ya da buradan kod yzıyorız
-						// yorumlar silinecek
-						rep_yorum.Delete(yorum);
-					}
-					foreach (Begeni begen in not.Begeniler.ToList())
-					{
-						// beğeniler silinecek
-						rep_begeni.Delete(begen);
-					}
-					//notlar silinecek
-					rep_not.Delete(not);
-				}
-
-				int silsonuc = rep_kat.Delete(sonuc.nesne);
-				if (silsonuc < 1)
-					sonuc.Hatalar.Add("Kategori silinemedi");
-			}
-			else
-			{
-				sonuc.Hatalar.Add("Kategori bulunamadı");
-			}
-			return sonuc;
-		}
-	}
+                int silsonuc = rep_kat.Delete(sonuc.nesne);//kategori siliniyor
+                if (silsonuc < 1)
+                    sonuc.Hatalar.Add("Kategori silinemedi.");
+            }
+            else
+            {
+                sonuc.Hatalar.Add("Kategori bulunamadı");
+            }
+            return sonuc;
+        }
+    }
 }

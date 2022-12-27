@@ -12,10 +12,8 @@ namespace Makale_DataAccessLayer
 
         public Singleton()
         {
-            if (db==null)
-            {
-                db= new DatabaseContext();
-            }
+            if(db==null)
+                db = new DatabaseContext();
         }
     }
 }

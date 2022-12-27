@@ -6,7 +6,7 @@
 
 <div class="row">
     <div class="col-md-10 col-md-offset-1">
-        <h2>Kategori Ekle</h2>
+        <h2>Kategori Değiştir</h2>
         <hr />
     </div>
 </div>
@@ -18,7 +18,7 @@
             @Html.AntiForgeryToken()
 
             <div class="form-horizontal">
-             
+          
                 @Html.ValidationSummary(false)
                 @Html.HiddenFor(model => model.Id)
 
@@ -26,7 +26,6 @@
                     @Html.LabelFor(model => model.Baslik, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
                         @Html.EditorFor(model => model.Baslik, new { htmlAttributes = new { @class = "form-control" } })
-
                     </div>
                 </div>
 
@@ -34,25 +33,17 @@
                     @Html.LabelFor(model => model.Aciklama, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
                         @Html.EditorFor(model => model.Aciklama, new { htmlAttributes = new { @class = "form-control" } })
-
                     </div>
                 </div>
-
-
 
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Kaydet" class="btn btn-success" />
-                        @*<a href="/Kategori/Index" class="btn btn-warning"><span class="glyphicon glyphicon-list"></span>  Listeye Dön</a>*@
-                       
-                        @BootstrapHelper.Linkbutton("/Kategori/Index","warning","", "list", "Listeye Dön")
+                        @BootstrapHelper.Button("submit", "Kaydet", "success", "", "floppy-disk")
+                        @BootstrapHelper.Linkbuton("/Kategori/Index", "warning", string.Empty, "", "Listeye Dön")
                     </div>
                 </div>
-
-              
             </div>
         }
 
-
-    </div>
+</div>
 </div>

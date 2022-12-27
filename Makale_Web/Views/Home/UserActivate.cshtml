@@ -1,22 +1,21 @@
-﻿@model List<string>
+﻿
 @{
     ViewBag.Title = "Hesap Aktifleştirme";
 }
 
-<h2>Kullanıcı Aktivasyonu</h2>
+<h2>UserActivate</h2>
 <div class="container">
     <div class="text-success">
-
         <p>
-           Hesabınız aktifleştirildi.
-
+            Hesabınız aktifleştirildi.
         </p>
-        <br />
     </div>
 </div>
+
+
 <script>
+
     $(function () {
-        $("footer").parent.hide();
-        setTimeout(function () { window.location = "/Home/Index"}, 5000);
+        setTimeout(function () { window.location = "/Home/Index" },5000);
     });
 </script>

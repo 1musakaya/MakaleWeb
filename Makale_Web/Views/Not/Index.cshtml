@@ -4,122 +4,93 @@
     ViewBag.Title = "Index";
 }
 
-@*<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>*@
-<table class="table" border="1">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Kullanici.KullaniciAdi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Kategori.Baslik)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Baslik)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Text)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Taslak)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BegeniSayisi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.KayitTarihi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DegistirmeTarihi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DegistirenKullanici)
-        </th>
-        <th></th>
-    </tr>
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+     
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <p>
+            <a href="/Not/Create" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>Yeni Kayıt</a>
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Kullanici.KullaniciAdi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Kategori.Baslik)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Baslik)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Text)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Taslak)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BegeniSayisi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.KayitTarih)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DegistirmeTarihi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DegistirenKullanici)
+                </th>
+                <th></th>
+            </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Kullanici.KullaniciAdi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Kategori.Baslik)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Baslik)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Text)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Taslak)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BegeniSayisi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.KayitTarihi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DegistirmeTarihi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DegistirenKullanici)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            </td>
-        </tr>
-    }
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Kullanici.KullaniciAdi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Kategori.Baslik)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Baslik)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Text)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Taslak)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BegeniSayisi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.KayitTarih)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DegistirmeTarihi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DegistirenKullanici)
+                    </td>
+                    <td style="display:flex">
 
-</table>
+                        @BootstrapHelper.Linkbuton("/Not/Edit/" + item.Id, "warning", "btn-sm", "edit", "")
+                        @BootstrapHelper.Linkbuton("/Not/Details/" + item.Id, "info", "btn-sm", "search", "")
+                        @BootstrapHelper.Linkbuton("/Not/Delete/" + item.Id, "danger", "btn-sm", "trash", "")
 
-<style>
-/*    boyut {
-        margin: 0;
-        padding: 0;
-    }*/
-/*
-    body {
-        font: 13px "Trebuchet MS", Arial, Helvetica, sans-serif;
-        background: #266d2f;
-    }*/
 
-    table {
-    /*    background-image: url("https://previews.123rf.com/images/mskaratash/mskaratash1912/mskaratash191200062/136785297-full-seamless-wallpaper-for-zebra-and-tiger-stripes-animal-skin-pattern.-black-and-white-design-for-textile-fabric-printing.-fashionable-and-home-design-fit..jpg");*/
-        width: 300px;
-        /*margin: 200px auto;*/
-        table-layout:fixed;
-        border-collapse:collapse;
-        outline-style:groove;
-        border-style:dotted;
-    }
-/*
-    caption {
-        font-size: 18px;
-        margin-bottom: 10px;
-        color: #CC0;
-        font-weight: bold;
-        caption-side: top;
-    }*/
+                    </td>
+                </tr>
+            }
 
-    tr:nth-child(odd) {
-        background: #66b7f3;
-      /*  background-image: url("https://previews.123rf.com/images/skellos/skellos2011/skellos201100005/158742677-vector-isolated-leopard-or-jaguar-illustration.jpg");*/
-    }
+        </table>
 
-    td, th {
-        padding: 10px;
-    }
+    </div>
+</div>
 
-    th {
-        background: #0DD;
-    }
-</style>
+

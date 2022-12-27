@@ -10,49 +10,47 @@ using System.Threading.Tasks;
 
 namespace Makale_DataAccessLayer
 {
-    public class Repository<T> : Singleton where T : class
+    public class Repository<T>:Singleton where T:class
     {
         DbSet<T> _objectset;
         public Repository()
         {
-            _objectset = db.Set<T>();
+            _objectset=db.Set<T>();
         }
-
-        //DatabaseContext db = new DatabaseContext();
-
+   
         public List<T> Liste()
         {
-            return _objectset.ToList();   // yukarıdaki where t classı yazamadan önde seti çiziyordu çünkü set t nin bir class olduğunu garantilemek istiyor
+            return _objectset.ToList();
         }
 
         public IQueryable<T> ListeQueryable()
         {
             return _objectset.AsQueryable();
         }
-
-        public List<T> Liste(Expression<Func<T, bool>> kosul)
+        public List<T> Liste(Expression<Func<T,bool>> kosul)
         {
-            return _objectset.Where(kosul).ToList();
+           return _objectset.Where(kosul).ToList();
         }
 
         public T Find(Expression<Func<T, bool>> kosul)
         {
             return _objectset.FirstOrDefault(kosul);
         }
+
         public int Insert(T nesne)
         {
             _objectset.Add(nesne);
 
             EntitiesBase obj = nesne as EntitiesBase;
+            DateTime zaman = DateTime.Now;
 
-            DateTime zaman = DateTime.Now;  // burada örneklememeizin sebebi saniye farkı oluşabilir o yüzden
-
-            if (nesne is EntitiesBase)
+            if(nesne is EntitiesBase)
             {
-                obj.KayitTarihi = zaman;
+                obj.KayitTarih = zaman;
                 obj.DegistirmeTarihi = zaman;
-                obj.DegistirenKullanici =Uygulama.kullaniciAd;
+                obj.DegistirenKullanici = Uygulama.kullaniciad;
             }
+
             return db.SaveChanges();
         }
 
@@ -65,13 +63,16 @@ namespace Makale_DataAccessLayer
         public int Update(T nesne)
         {
             EntitiesBase obj = nesne as EntitiesBase;
+
             if (nesne is EntitiesBase)
             {
                 obj.DegistirmeTarihi = DateTime.Now;
-                obj.DegistirenKullanici = "system";
+                obj.DegistirenKullanici = Uygulama.kullaniciad;
             }
 
             return db.SaveChanges();
         }
+
+
     }
 }

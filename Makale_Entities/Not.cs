@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 namespace Makale_Entities
 {
     [Table("Notlar")]
-    public class Not : EntitiesBase
+    public class Not:EntitiesBase
     {
-        [Required, StringLength(50)]
+        [Required,StringLength(50)]
         public string Baslik { get; set; }
 
         [Required, StringLength(250)]
@@ -21,16 +21,18 @@ namespace Makale_Entities
         public int BegeniSayisi { get; set; }
 
         [DisplayName("Kategori")]
-        public int KategoriId { get; set; }
+        public int KategoriId { get; set; } 
+
         public virtual Kategori Kategori { get; set; }
         public virtual Kullanici Kullanici { get; set; }
         public virtual List<Yorum> Yorumlar { get; set; }
         public virtual List<Begeni> Begeniler { get; set; }
 
+
         public Not()
         {
-            Yorumlar= new List<Yorum>();
-            Begeniler= new List<Begeni>();
+            Yorumlar = new List<Yorum>();
+            Begeniler = new List<Begeni>();
         }
     }
 }

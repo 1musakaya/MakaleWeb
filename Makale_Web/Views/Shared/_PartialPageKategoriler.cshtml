@@ -1,18 +1,18 @@
-﻿@using Makale_BusinessLayer
+﻿@using Makale_Web.Models
 @using Makale_Entities
-@{
-    KategoriYonet ky = new KategoriYonet();
-    List<Kategori> kategoriler = ky.Listele();
+@{ 
+
+    List<Kategori> kategoriler = CacheHelper.Kategoriler();
 }
 
 <p class="lead">Kategoriler</p>
 <div class="list-group">
 
-    <a href="#" class="list-group-item"><span class="glyphicon glyphicon-menu-hamburger"></span>Tümü</a>
+    <a href="/Home/Index" class="list-group-item"><span class="glyphicon glyphicon-arrow-right"></span>Tümü</a>
 
     @foreach (Kategori item in kategoriler)
     {
-        <a href="/Home/Kategori/@item.Id" class="list-group-item"><span class="glyphicon glyphicon-menu-right"></span>@item.Baslik</a>
+        <a href="/Home/Kategori/@item.Id" class="list-group-item"><span class="glyphicon glyphicon-arrow-right"></span> @item.Baslik </a>
     }
 
 </div>

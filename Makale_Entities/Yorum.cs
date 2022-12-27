@@ -9,10 +9,11 @@ using System.Threading.Tasks;
 namespace Makale_Entities
 {
     [Table("Yorum")]
-    public class Yorum : EntitiesBase
+    public class Yorum:EntitiesBase
     {
-        [Required, StringLength(250)]
+        [Required,StringLength(250)]
         public string Text { get; set; }
+
         public virtual Kullanici Kullanici { get; set; }
         public virtual Not Not { get; set; }
     }

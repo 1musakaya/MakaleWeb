@@ -5,7 +5,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7E23D056-D93B-4E03-97F6-D9D7B083061C}</ProjectGuid>
+    <ProjectGuid>{5413C777-7A49-42D4-B397-C4CDD5BA5824}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Makale_BusinessLayer</RootNamespace>
@@ -58,45 +58,25 @@
     <Compile Include="NotYonet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Test.cs" />
+    <Compile Include="YorumYonet.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Makale_Common\Makale_Common.csproj">
-      <Project>{b326f8e2-59df-4aac-b481-59fe8938845e}</Project>
+      <Project>{7f55d8f7-7ebd-4833-99d7-151da123677e}</Project>
       <Name>Makale_Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Makale_DataAccessLayer\Makale_DataAccessLayer.csproj">
-      <Project>{5e357331-5ca9-424f-9b12-ac30c0f3d2e4}</Project>
+      <Project>{8a045032-9088-4662-b791-25e14224de5b}</Project>
       <Name>Makale_DataAccessLayer</Name>
     </ProjectReference>
     <ProjectReference Include="..\Makale_Entities\Makale_Entities.csproj">
-      <Project>{d0ac1d78-b4d6-4c11-97f4-a442dc6f3975}</Project>
+      <Project>{e991aeb9-a66f-4b06-bffb-2ed30fd32932}</Project>
       <Name>Makale_Entities</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Content\bootstrap-theme.css.map" />
-    <None Include="Content\bootstrap-theme.min.css.map" />
-    <None Include="Content\bootstrap.css.map" />
-    <None Include="Content\bootstrap.min.css.map" />
-    <None Include="fonts\glyphicons-halflings-regular.eot" />
-    <None Include="fonts\glyphicons-halflings-regular.ttf" />
-    <None Include="fonts\glyphicons-halflings-regular.woff" />
-    <None Include="fonts\glyphicons-halflings-regular.woff2" />
     <None Include="packages.config" />
-    <None Include="Scripts\jquery-1.9.1.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\jquery-1.9.1.intellisense.js" />
-    <Content Include="Scripts\jquery-1.9.1.js" />
-    <Content Include="Scripts\jquery-1.9.1.min.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -1,34 +1,24 @@
 ﻿@model Kullanici
 @{
-    ViewBag.Title = "ProfilGoster";
+    ViewBag.Title = "Profiliniz";
 }
-
-
-
 <div class="container">
     <div class="row">
         <h2>Profiliniz</h2>
+        <hr />
     </div>
-    <br />
     <div class="row">
         <div class="col-md-2">
-            <img src="~/Images/@Model.ProfilResim" class="img-circle" width="200" height="200" />
+            <img src="~/image/@Model.ProfilResim" class="img-circle" width="100" height="100" />
         </div>
         <div class="col-md-8">
-            <h3>
-                <b>Adınız ve Soyadınız:</b>
-                @(Model.Ad+" "+Model.Soyad)
-            </h3>
+            @Html.ValidationSummary(false)
             <br />
-            <h4>
-                <b>Kullanıcı Adı:</b>
-                @(Model.KullaniciAdi)
-            </h4>
+            <h3>@(Model.Ad+" "+Model.Soyad)</h3>
             <br />
-            <h4>
-                <b>Email adresi:</b>
-                @(Model.Email)
-            </h4>
+            <h4><b>Kullanıcı Adı:</b>@(Model.KullaniciAdi)</h4>
+            <br />
+            <h4><b>Email:</b>@(Model.Email)</h4>
         </div>
         <div class="col-md-2">
             <div class="dropdown">
@@ -37,13 +27,12 @@
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a href="/Home/ProfilDegistir"><span class="glyphicon glyphicon-edit"></span>Değiştir</a></li>
-                    
-                    <li><a href="/Home/ProfilSil" onclick="return confirm ('Hesabı silmek istediğinize emin misiniz?)'"><span class="glyphicon glyphicon-trash"></span> Sil</a></li>
-                   
+                    <li><a href="/Home/ProfilDegistir">
+                       <span class="glyphicon glyphicon-edit"></span> Değiştir</a></li>
+                    <li><a href="/Home/ProfilSil" onclick="return confirm('Hesabı silmek istediğinizden emin misiniz?')">
+                        <span class="glyphicon glyphicon-trash"></span>Sil</a></li>                  
                 </ul>
             </div>
         </div>
     </div>
 </div>
-

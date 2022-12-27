@@ -13,6 +13,7 @@
 
 <div class="row">
     <div class="col-md-10 col-md-offset-1">
+
         <dl class="dl-horizontal">
             <dt>
                 @Html.DisplayNameFor(model => model.Baslik)
@@ -31,11 +32,11 @@
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.KayitTarihi)
+                @Html.DisplayNameFor(model => model.KayitTarih)
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.KayitTarihi)
+                @Html.DisplayFor(model => model.KayitTarih)
             </dd>
 
             <dt>
@@ -56,13 +57,10 @@
 
         </dl>
     </div>
-
     <div class="col-md-10 col-md-offset-1">
         <p>
-       
-            <a href="/Kategori/Edit/@Model.Id" class="btn btn-success"><span class="glyphicon glyphicon-edit"></span>  Kaydet</a>
-
-            <a href="/Kategori/Index" class="btn btn-warning"><span class="glyphicon glyphicon-list"></span>  Listeye Dön</a>
+            <a href="/Kategori/Edit/@Model.Id" class="btn btn-success"><span class="glyphicon glyphicon-edit"></span>Kaydet</a>
+            <a href="/Kategori/Index" class="btn btn-warning">Listeye Dön</a>
         </p>
     </div>
 </div>

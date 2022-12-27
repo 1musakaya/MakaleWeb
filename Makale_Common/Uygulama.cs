@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Makale_Common
 {
-	public static class Uygulama
-	{
-		public static string kullaniciAd="system";
-	}
+    public static class Uygulama
+    {
+        public static string kullaniciad = "system";
+    }
 }

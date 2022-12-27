@@ -10,10 +10,10 @@ namespace Makale_Entities.ViewModel
 {
     public class LoginModel
     {
-        [DisplayName("Kullanıcı Adı"),Required(ErrorMessage ="{0} alanı boş geçilemez!"), StringLength(20)]
+        [DisplayName("Kullanıcı Adı"),Required(ErrorMessage ="{0} alanı boş geçilemez"), StringLength(20)]
         public string KullaniciAdi { get; set; }
 
-        [DisplayName("Şifre"),Required(ErrorMessage ="{0} alanı boş geçilemez!"), StringLength(20)]
+        [DisplayName("Şifre"),Required(ErrorMessage ="{0} alanı boş geçilemez"), StringLength(20)]
         public string Sifre { get; set; }
     }
 }

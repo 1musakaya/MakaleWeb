@@ -13,10 +13,7 @@ namespace Makale_Web.Controllers
 {
     public class KullaniciController : Controller
     {
-        /// <summary>
-        ///  controllera dolu bir controller ekleyip kullaniciyi seçtik üstten
-        /// </summary>
-        KullaniciYonet ky= new KullaniciYonet();
+        KullaniciYonet ky = new KullaniciYonet();
 
         // GET: Kullanici
         public ActionResult Index()
@@ -31,7 +28,8 @@ namespace Makale_Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Kullanici kullanici = ky.KullaniciBul(id.Value);
+            Kullanici kullanici = ky.KullanciBul(id.Value);
+           
             if (kullanici == null)
             {
                 return HttpNotFound();
@@ -53,18 +51,15 @@ namespace Makale_Web.Controllers
 
             if (ModelState.IsValid)
             {
-                //ky.KullaniciKaydet(kullanici);
-                //db.Kullanicis.Add(kullanici);
-                //db.SaveChanges();
-
-                BusinessLayerSonuc<Kullanici> sonuc = ky.KullaniciKaydet(kullanici);
-				if (sonuc.Hatalar.Count>0)
-				{
-                    sonuc.Hatalar.ForEach(x=>ModelState.AddModelError("",x));
+                BusinessLayerSonuc<Kullanici> sonuc = ky.KullaniciKaydet(kullanici); 
+                if (sonuc.Hatalar.Count > 0)
+                {
+                    sonuc.Hatalar.ForEach(x => ModelState.AddModelError("", x));
                     return View(kullanici);
-				}
+                }
+
                 return RedirectToAction("Index");
-            }
+            }          
 
             return View(kullanici);
         }
@@ -76,7 +71,7 @@ namespace Makale_Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Kullanici kullanici = ky.KullaniciBul(id.Value);
+            Kullanici kullanici = ky.KullanciBul(id.Value);
             if (kullanici == null)
             {
                 return HttpNotFound();
@@ -84,9 +79,6 @@ namespace Makale_Web.Controllers
             return View(kullanici);
         }
 
-        // POST: Kullanici/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Kullanici kullanici)
@@ -94,8 +86,7 @@ namespace Makale_Web.Controllers
             if (ModelState.IsValid)
             {
                 ky.KullaniciUpdate(kullanici);
-                //db.Entry(kullanici).State = EntityState.Modified;
-                //db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
             return View(kullanici);
@@ -108,7 +99,7 @@ namespace Makale_Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Kullanici kullanici = ky.KullaniciBul(id.Value);
+            Kullanici kullanici = ky.KullanciBul(id.Value);
             if (kullanici == null)
             {
                 return HttpNotFound();
@@ -120,13 +111,12 @@ namespace Makale_Web.Controllers
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
-        {      
+        {
             ky.KullaniciSil(id);
-            //db.Kullanicis.Remove(kullanici);
-            //db.SaveChanges();
+
             return RedirectToAction("Index");
         }
 
-    
+        
     }
 }

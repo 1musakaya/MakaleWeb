@@ -10,20 +10,19 @@ using System.Threading.Tasks;
 namespace Makale_Entities
 {
     [Table("Kategori")]
-    public class Kategori : EntitiesBase
+    public class Kategori:EntitiesBase
     {
-        [DisplayName("Kategori"),Required, StringLength(50)]
-
+        [DisplayName("Kategori"),Required,StringLength(50)]
         public string Baslik { get; set; }
-        [StringLength(150)]
 
-        public string Aciklama { get; set; }
+        [StringLength(150)]
+        public string Aciklama { get; set; } 
+
         public virtual List<Not> Notlar { get; set; }
 
         public Kategori()
         {
-            Notlar= new List<Not>();
-            
+            Notlar = new List<Not>();
         }
     }
 }

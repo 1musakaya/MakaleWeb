@@ -11,131 +11,123 @@ using Makale_Entities;
 
 
 namespace Makale_Web.Controllers
-{/// <summary>
- ///  bu xcontrolleri en alt seçenekteki controller iseçerek oluşturduk dolu geldi
- /// </summary>
-	public class KategoriController : Controller
-	{
-		KategoriYonet ky = new KategoriYonet();
+{
+    public class KategoriController : Controller
+    {
 
-		// GET: Kategori
-		public ActionResult Index()
-		{
-			return View(ky.Listele());
-		}
+        KategoriYonet ky = new KategoriYonet();
 
-		// GET: Kategori/Details/5
-		public ActionResult Details(int? id)
-		{
-			if (id == null)
-			{
-				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-			}
-			Kategori kategori = ky.KategoriBul(id.Value);
-			if (kategori == null)
-			{
-				return HttpNotFound();
-			}
-			return View(kategori);
-		}
+        public ActionResult Index()
+        {
+            return View(ky.Listele());
+        }
 
-		// GET: Kategori/Create
-		public ActionResult Create()
-		{
-			return View();
-		}
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Kategori kategori = ky.KategoriBul(id.Value);
+            if (kategori == null)
+            {
+                return HttpNotFound();
+            }
+            return View(kategori);
+        }
 
-		[HttpPost]
-		[ValidateAntiForgeryToken]
-		public ActionResult Create(Kategori kategori)
-		{
-			ModelState.Remove("DegistirenKullanici");  // validationda değiştiren kullanıcıyı kontrol etme dmeiş olduk yani kutuya tıkladığımızda verilen uyarılarda değiştiren kullanıcı kısmı çıkmasın
+        public ActionResult Create()
+        {
+            return View();
+        }
 
-			if (ModelState.IsValid)
-			{
-				BusinessLayerSonuc<Kategori> sonuc = ky.KategoriEkle(kategori);
-				if (sonuc.Hatalar.Count > 0)
-				{
-					sonuc.Hatalar.ForEach(x => ModelState.AddModelError("", x));
-					return View(kategori);
-				}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(Kategori kategori)
+        {
+            ModelState.Remove("DegistirenKullanici");
 
-				/*  ky.KategoriEkle(kategori);  */ // bu methodu burada oluşturduk           
-				return RedirectToAction("Index");
-			}
-			return View(kategori);
-		}
+            if (ModelState.IsValid)
+            {
+                BusinessLayerSonuc<Kategori> sonuc = ky.KategoriEkle(kategori);
 
-		// GET: Kategori/Edit/5
-		public ActionResult Edit(int? id)
-		{
-			if (id == null)
-			{
-				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-			}
-			Kategori kategori = ky.KategoriBul(id.Value);
-			if (kategori == null)
-			{
-				return HttpNotFound();
-			}
-			return View(kategori);
-		}
+                if (sonuc.Hatalar.Count > 0)
+                {
+                    sonuc.Hatalar.ForEach(x => ModelState.AddModelError("", x));
+                    return View(kategori);
+                }                         
 
-		[HttpPost]
-		[ValidateAntiForgeryToken]
-		public ActionResult Edit(Kategori kategori)
-		{
-			ModelState.Remove("DegistirenKullanici");
+                return RedirectToAction("Index");
+            }
 
-			if (ModelState.IsValid)
-			{
-				BusinessLayerSonuc<Kategori> sonuc = ky.KategoriUpdate(kategori);
-				//db.Entry(kategori).State = EntityState.Modified;
-				//db.SaveChanges();  bunlar yerine alttaki
+            return View(kategori);
+        }
 
-				if (sonuc.Hatalar.Count > 0)
-				{
-					sonuc.Hatalar.ForEach(x => ModelState.AddModelError("", x));
-					return View(kategori);
-				}
-				//ky.KategoriUpdate(kategori);
-				return RedirectToAction("Index");
-			}
-			return View(kategori);
-		}
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Kategori kategori = ky.KategoriBul(id.Value);
+            if (kategori == null)
+            {
+                return HttpNotFound();
+            }
+            return View(kategori);
+        }
 
-		// GET: Kategori/Delete/5
-		public ActionResult Delete(int? id)
-		{
-			if (id == null)
-			{
-				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-			}
-			Kategori kategori = ky.KategoriBul(id.Value);
-			if (kategori == null)
-			{
-				return HttpNotFound();
-			}
-			return View(kategori);
-		}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(Kategori kategori)
+        {
+            ModelState.Remove("DegistirenKullanici");
 
-		// POST: Kategori/Delete/5
-		[HttpPost, ActionName("Delete")]
-		[ValidateAntiForgeryToken]    // delete sayfasında da forgery token var sayfaaya yapılan saldırılarda kontorl gibi bi şeu
-		public ActionResult DeleteConfirmed(int id)
-		{
-			Kategori kategori = ky.KategoriBul(id);
-			//db.Kategoris.Remove(kategori);
-			//db.SaveChanges();
+            if (ModelState.IsValid)
+            {
+                BusinessLayerSonuc<Kategori> sonuc = ky.KategoriUpdate(kategori);
 
-			BusinessLayerSonuc<Kategori> sonuc = ky.KategoriSil(kategori);
-			if (sonuc.Hatalar.Count>0)
-			{
-				sonuc.Hatalar.ForEach(x=>ModelState.AddModelError("",x));
-				return View(sonuc.nesne);
-			}
-			//ky.KategoriSil(kategori);
-			return RedirectToAction("Index");
-		}
-	}
+                if (sonuc.Hatalar.Count > 0)
+                {
+                    sonuc.Hatalar.ForEach(x => ModelState.AddModelError("", x));
+                    return View(kategori);
+                }              
+
+                return RedirectToAction("Index");
+            }
+            return View(kategori);
+        }
+
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Kategori kategori = ky.KategoriBul(id.Value);
+            if (kategori == null)
+            {
+                return HttpNotFound();
+            }
+            return View(kategori);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Kategori kategori = ky.KategoriBul(id);
+           
+            BusinessLayerSonuc<Kategori> sonuc=ky.KategoriSil(kategori);
+
+            if (sonuc.Hatalar.Count > 0)
+            {               
+                sonuc.Hatalar.ForEach(x => ModelState.AddModelError("", x));
+                return View(sonuc.nesne);
+            }
+
+            return RedirectToAction("Index");
+        }
+
+    }
 }
