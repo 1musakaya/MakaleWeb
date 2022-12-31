@@ -10,6 +10,7 @@
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            ContextKey = "Makale_DataAccessLayer.DatabaseContext";
         }
 
         protected override void Seed(Makale_DataAccessLayer.DatabaseContext context)

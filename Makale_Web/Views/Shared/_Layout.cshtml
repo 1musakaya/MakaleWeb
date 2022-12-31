@@ -8,7 +8,7 @@
     <meta name="author" content="">
 
     <title>Makale Web Projesi</title>
-    
+
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/shop-homepage.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-3.6.1.min.js"></script>
@@ -17,11 +17,11 @@
 </head>
 
 <body>
-    @{ 
+    @{
         Kullanici kullanici = null;
-        if(Session["login"]!=null)
+        if (Session["login"] != null)
         {
-            kullanici =(Kullanici)Session["login"];
+            kullanici = (Kullanici)Session["login"];
         }
     }
     <!-- Navigation -->
@@ -41,8 +41,8 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     @if (kullanici != null)
-                    {           
-   
+                    {
+
                         <li class="dropdown">
                             <a href="/Not/Index" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon "></span>Yönetim <span class="caret"></span></a>
                             <ul class="dropdown-menu">
@@ -67,13 +67,13 @@
                     }
 
                     <li>
-                        <a href="/Home/Begenilenler"><span class="glyphicon "></span>En Beğenilenler</a>
+                        <a href="/Home/Begenilenler"><span class=""></span>En Beğenilenler</a>
                     </li>
                     <li>
-                        <a href="/Home/Index"><span class="glyphicon "></span>Son Yazılanlar</a>
+                        <a href="/Home/Index"><span class=""></span>Son Yazılanlar</a>
                     </li>
                     <li>
-                        <a href="/Home/About"><span class="glyphicon "></span>Hakkımızda</a>
+                        <a href="/Home/About"><span class=""></span>Hakkımızda</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -82,14 +82,14 @@
                     {
                         <li>
                             <a href="/Home/Login">
-                                <b><span >Giriş&nbsp;Yap</span> </b>
-                                
+                                <b><span>Giriş&nbsp;Yap</span> </b>
+
                             </a>
                         </li>
                         <li>
                             <a href="/Home/KayitOl">
                                 <b><span>Üye&nbsp;Ol</span> </b>
-                                
+
                             </a>
                         </li>
                     }
@@ -98,13 +98,13 @@
                         <li>
                             <a href="/Home/ProfilGoster">
                                 <b><span>@kullanici.KullaniciAdi</span></b>
-                                
+
                             </a>
                         </li>
                         <li>
                             <a href="/Home/Logout">
                                 <b><span>Çıkış</span></b>
-                                
+
                             </a>
                         </li>
 
@@ -122,7 +122,7 @@
     @RenderBody()
     <!-- /.container -->
 
-   @RenderSection("footer",false)
+    @RenderSection("footer", false)
     <!-- /.container -->
 
 

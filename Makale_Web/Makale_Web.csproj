@@ -120,10 +120,12 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="image\hakkimizda.png" />
     <Content Include="image\img1.jpg" />
     <Content Include="image\img2.jpg" />
     <Content Include="image\img3.jpg" />
     <Content Include="image\img4.jpg" />
+    <Content Include="image\user_1.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="App_Code\BootstrapHelper.cshtml" />
@@ -132,6 +134,8 @@
     <Content Include="Scripts\jquery-3.6.1.min.js" />
     <Content Include="Scripts\jquery-3.6.1.slim.js" />
     <Content Include="Scripts\jquery-3.6.1.slim.min.js" />
+    <Content Include="Scripts\ScriptLike.js" />
+    <Content Include="Scripts\ScriptYorumlar.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -141,6 +145,9 @@
     <Compile Include="Controllers\KullaniciController.cs" />
     <Compile Include="Controllers\NotController.cs" />
     <Compile Include="Controllers\YorumController.cs" />
+    <Compile Include="Filters\Auth.cs" />
+    <Compile Include="Filters\AuthAdmincs.cs" />
+    <Compile Include="Filters\Exc.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -181,6 +188,8 @@
     <Content Include="Views\Not\Edit.cshtml" />
     <Content Include="Views\Not\Index.cshtml" />
     <Content Include="Views\Shared\_PartialPageYorumlar.cshtml" />
+    <Content Include="Views\Shared\_PartialPageNotDetay.cshtml" />
+    <Content Include="Views\Home\ErrorPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

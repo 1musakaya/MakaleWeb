@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Makale_Web.Filters;
 
 namespace Makale_Web.Controllers
 {
@@ -16,40 +17,43 @@ namespace Makale_Web.Controllers
         NotYonet ny = new NotYonet();
         public ActionResult YorumGoster(int? id)
         {
-            if (id == null)
+            if(id==null)
             {
                 return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
-            }
-            Not not = ny.NotBul(id.Value);
-
+            }      
+            Not not=ny.NotBul(id.Value);
+           
             return PartialView("_PartialPageYorumlar", not.Yorumlar);
         }
 
+        [Auth]
         [HttpPost]
-        public ActionResult Edit(int? id, string text)
+        public ActionResult Edit(int? id,string text)
         {
-            if (id == null)
+            if(id==null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-
-            Yorum yorum = yy.YorumBul(id.Value);
-
-            if (yorum == null)
+          
+            Yorum yorum=yy.YorumBul(id.Value);
+           
+            if(yorum==null)
             {
                 return new HttpNotFoundResult();
             }
             yorum.Text = text;
-
-            if (yy.YorumGuncelle(yorum) > 0)
+          
+            if(yy.YorumGuncelle(yorum)>0)
             {
-                return Json(new { sonuc = true }, JsonRequestBehavior.AllowGet);
+                return Json(new {sonuc=true}, JsonRequestBehavior.AllowGet);    
             }
 
-            return Json(new { sonuc = false }, JsonRequestBehavior.AllowGet);
+            return Json(new {sonuc=false}, JsonRequestBehavior.AllowGet);
 
         }
+
+        [Auth]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -71,34 +75,35 @@ namespace Makale_Web.Controllers
             return Json(new { sonuc = false }, JsonRequestBehavior.AllowGet);
         }
 
+        [Auth]
         [HttpPost]
-        public ActionResult Create(Yorum yorum, int? notid)
+        public ActionResult Create(Yorum yorum,int? notid)
         {
             ModelState.Remove("DegistirenKullanici");
 
-            if (ModelState.IsValid)
+            if(ModelState.IsValid)
             {
-                if (notid == null)
+                if(notid==null)
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
 
                 Not not = ny.NotBul(notid.Value);
 
-                if (not == null)
+                if(not==null)
                 {
                     return new HttpNotFoundResult();
                 }
 
                 yorum.Not = not;
-                yorum.Kullanici = (Kullanici)Session["login"];
-                int sonuc = yy.YorumEkle(yorum);
+                yorum.Kullanici =(Kullanici)Session["login"];
+                int sonuc=yy.YorumEkle(yorum);
 
                 if (sonuc > 0)
                 {
                     return Json(new { sonuc = true }, JsonRequestBehavior.AllowGet);
                 }
-
+                
             }
 
             return Json(new { sonuc = false }, JsonRequestBehavior.AllowGet);

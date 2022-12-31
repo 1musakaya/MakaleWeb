@@ -28,7 +28,7 @@ namespace Makale_BusinessLayer
 
         public int YorumSil(Yorum yorum)
         {
-            return rep_yorum.Delete(yorum);
+           return  rep_yorum.Delete(yorum);
         }
     }
 }
